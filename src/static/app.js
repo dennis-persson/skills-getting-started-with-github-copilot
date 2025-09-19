@@ -25,8 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants">
+            <p><strong>Current Participants:</strong></p>
+            <ul id="participants-list"></ul>
+          </div>
         `;
 
+        // Safely add participant emails as list items
+        const participantsList = activityCard.querySelector("#participants-list");
+        details.participants.forEach(email => {
+          const li = document.createElement("li");
+          li.textContent = email;
+          participantsList.appendChild(li);
+        });
         activitiesList.appendChild(activityCard);
 
         // Add option to select dropdown
